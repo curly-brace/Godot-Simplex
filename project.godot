@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="simplex_shader"
-run/main_scene="res://test_vert.tscn"
+run/main_scene="res://test_3d.tscn"
 config/icon="res://icon.png"
 
 [rendering]

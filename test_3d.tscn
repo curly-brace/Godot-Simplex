@@ -1,113 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://terr_test.gd" type="Script" id=1]
-[ext_resource path="res://2dsimplex.tres" type="Shader" id=2]
-
-[sub_resource type="ProceduralSky" id=1]
-
-radiance_size = 4
-sky_top_color = Color( 0.757507, 0.857061, 0.984375, 1 )
-sky_horizon_color = Color( 0.772095, 0.867554, 0.898438, 1 )
-sky_curve = 0.25
-sky_energy = 1.0
-ground_bottom_color = Color( 0.210938, 0.167679, 0.0527344, 1 )
-ground_horizon_color = Color( 0.634689, 0.818821, 0.917969, 1 )
-ground_curve = 0.01
-ground_energy = 1.0
-sun_color = Color( 1, 1, 1, 1 )
-sun_latitude = 35.0
-sun_longitude = 0.0
-sun_angle_min = 1.0
-sun_angle_max = 100.0
-sun_curve = 0.05
-sun_energy = 16.0
-texture_size = 2
-_sections_unfolded = [ "Ground", "Sky", "Sun" ]
-
-[sub_resource type="Environment" id=2]
-
-background_mode = 2
-background_sky = SubResource( 1 )
-background_sky_scale = 1.0
-background_color = Color( 0, 0, 0, 1 )
-background_energy = 1.0
-background_canvas_max_layer = 0
-ambient_light_color = Color( 0.15625, 0.15625, 0.15625, 1 )
-ambient_light_energy = 1.0
-ambient_light_sky_contribution = 1.0
-fog_enabled = false
-fog_color = Color( 0.5, 0.6, 0.7, 1 )
-fog_sun_color = Color( 1, 0.9, 0.7, 1 )
-fog_sun_amount = 0.0
-fog_depth_enabled = true
-fog_depth_begin = 10.0
-fog_depth_curve = 1.0
-fog_transmit_enabled = false
-fog_transmit_curve = 1.0
-fog_height_enabled = false
-fog_height_min = 0.0
-fog_height_max = 100.0
-fog_height_curve = 1.0
-tonemap_mode = 0
-tonemap_exposure = 1.0
-tonemap_white = 1.0
-auto_exposure_enabled = false
-auto_exposure_scale = 0.4
-auto_exposure_min_luma = 0.05
-auto_exposure_max_luma = 8.0
-auto_exposure_speed = 0.5
-ss_reflections_enabled = false
-ss_reflections_max_steps = 64
-ss_reflections_fade_in = 0.15
-ss_reflections_fade_out = 2.0
-ss_reflections_depth_tolerance = 0.2
-ss_reflections_roughness = true
-ssao_enabled = true
-ssao_radius = 1.0
-ssao_intensity = 1.0
-ssao_radius2 = 0.0
-ssao_intensity2 = 1.0
-ssao_bias = 0.01
-ssao_light_affect = 0.0
-ssao_color = Color( 0, 0, 0, 1 )
-ssao_blur = true
-dof_blur_far_enabled = false
-dof_blur_far_distance = 10.0
-dof_blur_far_transition = 5.0
-dof_blur_far_amount = 0.1
-dof_blur_far_quality = 1
-dof_blur_near_enabled = false
-dof_blur_near_distance = 2.0
-dof_blur_near_transition = 1.0
-dof_blur_near_amount = 0.1
-dof_blur_near_quality = 1
-glow_enabled = false
-glow_levels/1 = false
-glow_levels/2 = false
-glow_levels/3 = true
-glow_levels/4 = false
-glow_levels/5 = true
-glow_levels/6 = false
-glow_levels/7 = false
-glow_intensity = 0.8
-glow_strength = 1.0
-glow_bloom = 0.0
-glow_blend_mode = 2
-glow_hdr_threshold = 1.0
-glow_hdr_scale = 2.0
-glow_bicubic_upscale = false
-adjustment_enabled = false
-adjustment_brightness = 1.0
-adjustment_contrast = 1.0
-adjustment_saturation = 1.0
-_sections_unfolded = [ "Ambient Light", "Background", "SSAO" ]
+[ext_resource path="res://default_env.tres" type="Environment" id=2]
+[ext_resource path="res://2dsimplex.tres" type="Shader" id=3]
 
 [sub_resource type="ShaderMaterial" id=3]
 
-shader = ExtResource( 2 )
-shader_param/scale = null
+shader = ExtResource( 3 )
+shader_param/scale = 2.0
 shader_param/offset = null
 shader_param/C = null
+_sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="ImageTexture" id=4]
 
@@ -116,30 +19,30 @@ size = Vector2( 64, 64 )
 storage = 0
 lossy_quality = 0.7
 
-[sub_resource type="CubeMesh" id=5]
+[sub_resource type="CubeMesh" id=6]
 
 size = Vector3( 1, 4, 1 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="MultiMesh" id=6]
+[sub_resource type="MultiMesh" id=7]
 
 color_format = 2
 transform_format = 1
 instance_count = 0
-mesh = SubResource( 5 )
+mesh = SubResource( 6 )
 transform_array = PoolVector3Array(  )
 color_array = PoolColorArray(  )
 
-[sub_resource type="CubeMesh" id=7]
+[sub_resource type="CubeMesh" id=8]
 
 size = Vector3( 64, 1, 64 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="ViewportTexture" id=8]
+[sub_resource type="ViewportTexture" id=9]
 
 resource_local_to_scene = true
 viewport_path = NodePath("vp")
@@ -150,7 +53,7 @@ script = ExtResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
 
-transform = Transform( 1, 0, 0, 0, 0.897382, 0.441254, 0, -0.441254, 0.897382, 31.8947, 27.6879, 87.7623 )
+transform = Transform( 1, 0, 0, 0, 0.692345, 0.721566, 0, -0.721566, 0.692345, 31.8947, 29.6879, 76.7623 )
 projection = 0
 fov = 65.0
 near = 0.1
@@ -158,7 +61,7 @@ far = 100.0
 keep_aspect = 1
 current = false
 cull_mask = 1048575
-environment = SubResource( 2 )
+environment = ExtResource( 2 )
 h_offset = 0.0
 v_offset = 0.0
 doppler/tracking = 0
@@ -166,13 +69,14 @@ doppler/tracking = 0
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 
 transform = Transform( -0.0798968, -0.936213, 0.342231, -0.212843, 0.351434, 0.911697, -0.973814, 0, -0.227345, 0, 13.8878, 0 )
+visible = false
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
 light_negative = false
 light_specular = 0.5
 light_cull_mask = -1
-shadow_enabled = false
+shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_bias = 1.0
 shadow_contact = 0.0
@@ -185,6 +89,29 @@ directional_shadow_split_2 = 0.2
 directional_shadow_split_3 = 0.5
 directional_shadow_blend_splits = false
 directional_shadow_normal_bias = 0.2
+_sections_unfolded = [ "Directional Shadow", "Shadow" ]
+
+[node name="OmniLight" type="OmniLight" parent="."]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 23, 60 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_max_distance = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 100.0
+omni_attenuation = 1.0
+omni_shadow_mode = 0
+omni_shadow_detail = 1
+_sections_unfolded = [ "Omni", "Shadow", "Transform" ]
 
 [node name="vp" type="Viewport" parent="."]
 
@@ -196,7 +123,7 @@ transparent_bg = false
 msaa = 0
 hdr = false
 disable_3d = false
-usage = 0
+usage = 2
 debug_draw = 0
 render_target_v_flip = false
 render_target_clear_on_new_frame = true
@@ -231,7 +158,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-multimesh = SubResource( 6 )
+multimesh = SubResource( 7 )
 
 [node name="base" type="MeshInstance" parent="."]
 
@@ -247,13 +174,14 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 7 )
+mesh = SubResource( 8 )
 skeleton = NodePath("..")
 material/0 = null
 
 [node name="test" type="Sprite" parent="."]
 
 position = Vector2( 979.771, 556.209 )
-texture = SubResource( 8 )
+texture = SubResource( 9 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 

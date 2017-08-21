@@ -43,6 +43,8 @@ float snoise(vec2 v){
 	g.x  = a0.x  * x0.x  + h.x  * x0.y;
 	g.yz = a0.yz * x12.xz + h.yz * x12.yw;
     return dot(m, g) * 66.0 + 0.5;
+    //return 130.0 * dot(m, g);
+    
 }
 
 void fragment() {
@@ -52,7 +54,7 @@ void fragment() {
     
     vec3 color = vec3(0.0);
 
-    color = vec3(snoise(st));
+    color = vec3(clamp(snoise(st),0.0,1.0));
     
     COLOR.rgb = color;
 }"
