@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://terr_test.gd" type="Script" id=1]
 [ext_resource path="res://2dsimplex.tres" type="Shader" id=2]
@@ -139,6 +139,11 @@ subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
+[sub_resource type="ViewportTexture" id=8]
+
+resource_local_to_scene = true
+viewport_path = NodePath("vp")
+
 [node name="test_3d" type="Node"]
 
 script = ExtResource( 1 )
@@ -245,5 +250,10 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 7 )
 skeleton = NodePath("..")
 material/0 = null
+
+[node name="test" type="Sprite" parent="."]
+
+position = Vector2( 979.771, 556.209 )
+texture = SubResource( 8 )
 
 

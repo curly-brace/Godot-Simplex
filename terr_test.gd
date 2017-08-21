@@ -3,10 +3,11 @@ extends Node
 onready var mi = get_node('terrain')
 onready var vp = get_node('vp')
 onready var simplex = get_node('vp/simplex')
+onready var spr = get_node('test')
 var size = 64
-var scale = 8.0
+var scale = 2.0
 var cur_offset = Vector2(0, 0)
-var update_interval = 1.0
+var update_interval = 0.05
 var timer = 0.0
 
 func _ready():
@@ -27,14 +28,14 @@ func _process(delta):
         var mm = mi.get_multimesh()
 
         var t = Transform()
-        var s = vp.get_texture().get_data()
+        #it is supposed to be direct viewporttexture, but it fails because of bugs
+        var s = spr.get_texture().get_data()
         s.lock()
         var p
         for x in range(size):
             for y in range(size):
-                p = s.get_pixel(x, y).a
-                print(p)
-                mm.set_instance_transform(x*size+y, t.translated(Vector3(x, (2.0+p)*2.0, y)))
+                p = s.get_pixel(x, y).r
+                mm.set_instance_transform(x*size+y, t.translated(Vector3(x, p, y)))
         s.unlock()
         simplex.get_material().set_shader_param('offset', cur_offset)
 
